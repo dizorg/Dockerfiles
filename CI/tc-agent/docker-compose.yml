@@ -1,0 +1,14 @@
+version: "2"
+services:
+  tc_agent:
+    restart: always
+    image: local/tc-agent
+    environment:
+      - TEAMCITY_SERVER=http://localhost:8111
+      - AGENT_INSTANCE_NAME=tc-agent-mmfs
+      - TZ=Europe/Brussels
+    expose:
+      - 9090
+    volumes:
+      - /var/tmp/com.docker.vmnetd.socket:/var/run/docker.sock
+      - /usr/local/bin/docker:/usr/bin/docker

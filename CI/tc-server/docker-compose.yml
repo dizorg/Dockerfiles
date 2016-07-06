@@ -1,0 +1,14 @@
+version: "2"
+services:
+ teamcity_server:
+  restart: always
+  image: local/tc-server
+  ports:
+    - 8111:8111
+  volumes_from:
+    - data_teamcity
+
+ data_teamcity:
+  image: local/data
+  volumes:
+    - /var/lib/teamcity_server:/var/lib/teamcity

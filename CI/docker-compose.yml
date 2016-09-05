@@ -2,6 +2,7 @@ version: "2"
 services:
 
  tc_server:
+  build: tc-server/build
   restart: always
   image: local/tc-server
   ports:
@@ -15,6 +16,7 @@ services:
     - /var/lib/teamcity_server:/var/lib/teamcity
 
  tc_agent:
+  build: tc-agent/build
   restart: always
   image: local/tc-agent
   environment:
@@ -24,4 +26,3 @@ services:
     - 9090
   volumes:
     - /var/tmp/com.docker.vmnetd.socket:/var/run/docker.sock
-    - /usr/local/bin/docker:/usr/bin/docker

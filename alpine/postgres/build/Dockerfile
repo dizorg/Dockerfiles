@@ -1,4 +1,4 @@
-FROM alpine:3.4
+FROM local/alpine:3.4
 
 ENV LANG=en_US.utf8
 ENV PGDATA=/var/lib/postgresql/data

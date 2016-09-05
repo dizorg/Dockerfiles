@@ -8,7 +8,7 @@ cd && pwd
 
 seconds=1
 until $(curl -sO --fail $TEAMCITY_SERVER/update/buildAgent.zip 2>&1 >/dev/null); do
-  echo "[$(date)]] waiting for $TEAMCITY_SERVER to be available"
+  echo "[$(date)] waiting for $TEAMCITY_SERVER to be available"
   sleep $((seconds++))
 done
 

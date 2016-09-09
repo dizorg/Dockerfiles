@@ -1,6 +1,13 @@
 version: "2"
 services:
 
+ postgres:
+  restart: always
+  image: local/postgres
+  environment:
+    - POSTGRES_PASSWORD='1tcadmin23'
+  command: postgres
+
  tc_server:
   build: tc-server/build
   restart: always
@@ -9,6 +16,8 @@ services:
     - 8111:8111
   volumes_from:
     - data_teamcity
+  depends_on:
+    - postgres
 
  data_teamcity:
   image: local/data
@@ -26,3 +35,4 @@ services:
     - 9090
   volumes:
     - /var/tmp/com.docker.vmnetd.socket:/var/run/docker.sock
+
